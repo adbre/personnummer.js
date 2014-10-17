@@ -4,7 +4,7 @@
         var self = this;
 
         self.isValid = function (data) {
-            var regex = /^([0-9]{2}|[0-9]{4})([0-9]{2})([0-9]{2})(-|\+)([0-9]{3})([0-9])$/;
+            var regex = /^([0-9]{2}|[0-9]{4})([0-9]{2})([0-9]{2})(-|\+)?([0-9]{3})([0-9])$/;
             var match = regex.exec(data);
             if (!match) return false;
 
@@ -14,6 +14,9 @@
             var separator = match[4];
             var number = match[5];
             var checksum = match[6];
+			
+			if (!separator && year.length == 2)
+				return false;
 
             // Ignore century; not used for validation...
             if (year.length == 4) {

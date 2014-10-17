@@ -33,4 +33,8 @@ describe("Personnummer", function () {
 	it("Should invalidate a invalid personnummer", function () {
 		expect(personnummer.isValid("112233-4455")).toBe(false);
 	});
+	
+	it("Should validate personnummer with century and without separator", function() {
+		expect(personnummer.isValid("196408233234")).toBe(true);
+	});
 });
